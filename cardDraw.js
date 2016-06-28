@@ -1,13 +1,46 @@
-//Build a Deck of cards for Speculate there will be 9x 1card, 6x 2card and 3x 3 card
-// in each colour
-function buildDeck(colourInDeck)  {
-    var deck = new Array(colourInDeck);
-    var i;
-    for (i = 0; i < colourInDeck; i++ ) {
-        deck[i] = [9,6,3]  //card values for 1, 2, 3 in a colour
-    }
-return deck;
+//Global array for all the colours of the cards.
+var colourSets = ["Red", "Blue", "Green", "Yellow", "Grey", "Purple", "Brown", "Pink", "Orange"];
+var valueSets = [1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3];  //18 cards in a set
+
+//Create an object for each cards
+function card (colour, value) {
+  this.cardColour = colour;
+  this.cardValue = value;
 }
+
+
+//Create an object for each deck
+function deck (cardSets) {
+  this.deckOfCards = [];
+}
+
+//Methods for the DECK object
+function buildDeck(cardSets) {
+  var newCard;
+  var deck=[];
+
+  console.log("Card set", valueSets.length );
+
+  for (var i = 0; i < cardSets; i++) {
+    for (var j = 0; j < valueSets.length; j++) {
+      newCard = new card(colourSets[i], valueSets[j]);
+      deck[(i*valueSets.length)+j] = newCard;
+      console.log(newCard.cardColour);
+    }
+  }
+}
+
+buildDeck(5);
+
+
+/* Open comments
+//Method functions for singleDeck object
+
+//Function to shuffle the deck of cards
+function shuffle() {
+  var
+}
+
 
 function displayDeck(colourInDeck) {
     var deck = [];
@@ -24,3 +57,5 @@ console.log(displayDeck(9));
 
 //Randomly draw a a number of cards from a deck an count the number and colour
 //in the draw from a full deck and a number of extra cards.
+//
+*/
