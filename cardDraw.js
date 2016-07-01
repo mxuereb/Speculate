@@ -8,54 +8,36 @@ function card (colour, value) {
   this.cardValue = value;
 }
 
-
-//Create an object for each deck
-function deck (cardSets) {
-  this.deckOfCards = [];
-}
-
-//Methods for the DECK object
-function buildDeck(cardSets) {
+//Build a deck and shuffle
+function buildDeck(setsInDeck) {
   var newCard;
-  var deck=[];
+  var newDeck=[];
 
-  console.log("Card set", valueSets.length );
-
-  for (var i = 0; i < cardSets; i++) {
+  for (var i = 0; i < setsInDeck; i++) {
     for (var j = 0; j < valueSets.length; j++) {
       newCard = new card(colourSets[i], valueSets[j]);
-      deck[(i*valueSets.length)+j] = newCard;
-      console.log(newCard.cardColour);
+      newDeck[(i*valueSets.length)+j] = newCard;
     }
   }
+  newDeck.sort(function() {return 0.5 - Math.random()});
+  console.log(newDeck);
+  return newDeck;
 }
 
-buildDeck(5);
+buildDeck(3);
 
+/*//Draw a card from a deck
+function drawCard(deck) {
+  var topCard;
 
-/* Open comments
-//Method functions for singleDeck object
+  topCard =
 
-//Function to shuffle the deck of cards
-function shuffle() {
-  var
 }
 
-
-function displayDeck(colourInDeck) {
-    var deck = [];
-    var i;  //number of different card values in each colour
-    var j;
-
-    deck = buildDeck(colourInDeck);
-    for (i = 0; i < colourInDeck; i++) {
-          console.log("Colour ", i+1,"value 1x",deck[i][0],"value 2x",deck[i][1],"value 3x",deck[i][2]);
-    }
+function cardDisplay (cardSets, cardDraws, displaySize) {
+  cardDeck = buildDeck(6);
+  console.log(cardDeck);
 }
 
-console.log(displayDeck(9));
-
-//Randomly draw a a number of cards from a deck an count the number and colour
-//in the draw from a full deck and a number of extra cards.
-//
+cardDisplay(5,1,1);
 */
