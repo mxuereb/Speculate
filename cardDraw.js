@@ -20,24 +20,30 @@ function buildDeck(setsInDeck) {
     }
   }
   newDeck.sort(function() {return 0.5 - Math.random()});
-  console.log(newDeck);
   return newDeck;
 }
 
-buildDeck(3);
+function cardDisplayCounts (cardSets, cardDraws) {
+  var deck = [];
+  var display = [];
+  var counts = [];
 
-/*//Draw a card from a deck
-function drawCard(deck) {
-  var topCard;
-
-  topCard =
-
+  deck =buildDeck(cardSets);
+  for (var i = 0; i < cardDraws; i++) {
+    display[i] = deck.pop();
+  }
+  for (var j =0; j < colourSets.length; j++) {
+      counts[j] = 0
+      for (var k =0; k < display.length; k++) {
+        if (colourSets[j] == display[k].cardColour) {
+        counts[j]++;
+        console.log(j, k, colourSets[j], display[k].cardColour, counts[j]);
+        }
+      }
+  }
+  console.log("display\n",display);
+  console.log("counts", counts);
+  return counts;
 }
 
-function cardDisplay (cardSets, cardDraws, displaySize) {
-  cardDeck = buildDeck(6);
-  console.log(cardDeck);
-}
-
-cardDisplay(5,1,1);
-*/
+cardDisplay(5,10);
